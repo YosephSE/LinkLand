@@ -1,10 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Feed | LinkLand</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
+  <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}">
+
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/ico.png') }}"
+      type="image/x-icon"
+    />
+    <title>Feed | LinkLand</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-NZoGk7E2bFHG3vH8WEimWvyg1EALn9XJKn+cT8T1RwU6TJGL6n3plndvQ8WnxM55EjXgN9ckPeT6T8W6UHZi6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+
+	<!-- navbar -->
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand mx-auto">
+        <img
+          src="{{url_for('static', filename='img/icon.png')}}"
+          width="80"
+          height="70"
+          class="d-inline-block align-top"
+          alt="Logo"
+        />
+      </a>
+    </nav>
+    <br /><br />
+	<a href="post">
+		<div class="d-flex justify-content-center">
+		<button class="btn btn-danger w-50 rounded-pill">START A POST</button>
+		</div>
+	</a>
+    <br /><br />
+
+
+<!-- post cards -->
+
+{% for post in posts %}
+<div class="row justify-content-center">
+	<div class="col-md-6">
+	  <div class="card mb-3">
+	    
+		<div class="card-body">
+		  <div class="d-flex">
+			<div class="flex-shrink-0">
+			  <img
+				src="https://www.google.com/imgres?imgurl=https%3A%2F%2Ficon-library.com%2Fimages%2F50x50-icon%2F50x50-icon-2.jpg&tbnid=CZGnP-4ebKotGM&vet=12ahUKEwiAqrjB5-j-AhUD66QKHSHbBGMQMygPegUIARDXAQ..i&imgrefurl=https%3A%2F%2Ficon-library.com%2Ficon%2F50x50-icon-2.html&docid=MdOJWlL4n4t0-M&w=300&h=300&q=50x50%20image&ved=2ahUKEwiAqrjB5-j-AhUD66QKHSHbBGMQMygPegUIARDXAQ"
+				class="rounded-circle me-3"
+				width="50px" height="50px"
+			  />
+			</div>
+			<div class="flex-grow-1">
+			  <h5 class="card-title mb-1">{{ post[0] + " "+ post[1] }}</h5>
+			  <h6 class="card-subtitle text-muted mb-2">{{ post[2]}}</h6>
+			</div>
+		  </div><br>
+			<h4 class="text-center">{{ post[3]}}</h4>
+		  <p class="card-text mt-3">{{ post[4] }}</p>
+		  <div class="mt-3">
+		  </div>
+		  <div class="d-flex justify-content-between mt-3">
+			<button class="btn btn-light me-2">
+			  <i class="far fa-thumbs-up me-2"></i>Like
+			</button>
+			<button class="btn btn-light">
+			  <i class="far fa-comment-alt me-2"></i>Comment
+			</button>
+		  </div>
+		  
+		  
+		</div>
+	  </div>
+	</div>
+  </div>
+  <hr class="my-4 border-top border-3 border-danger w-50">
+  {% endfor %}
+
+  <!-- Footer section -->
+  <footer>
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+		  <p>&copy; LinkLand.com <span id="current-year"></span></p>
+		</div>
+	  </div>
+	</div>
+	<script>
+	  var currentYear = new Date().getFullYear();
+	  document.getElementById("current-year").textContent = currentYear;
+	</script>
+  </footer>
+  
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
 </html>
