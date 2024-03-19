@@ -60,6 +60,8 @@ def signup():
 
 @app.route('/')
 def home():
+    if len(session.keys()) == 0:
+        return redirect(url_for('ls'))
     cur = mysql.connection.cursor()
     cur.execute("select users.first_name, users.last_name, posts.publication_date, posts.title, posts.content, users.profile from users inner join posts on posts.user_id = users.id")
     posts = cur.fetchall()
